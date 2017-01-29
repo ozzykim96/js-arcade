@@ -3,16 +3,16 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/ozzy_/Documents/NetBeansProjects/js-tetris/public_html/js/util.js</file>
-            <file>file:/C:/Users/ozzy_/Documents/NetBeansProjects/js-tetris/public_html/js/startpage.js</file>
-            <file>file:/C:/Users/ozzy_/Documents/NetBeansProjects/js-tetris/public_html/js/gamepage.js</file>
-            <file>file:/C:/Users/ozzy_/Documents/NetBeansProjects/js-tetris/public_html/js/board.js</file>
-            <file>file:/C:/Users/ozzy_/Documents/NetBeansProjects/js-tetris/public_html/js/blocks.js</file>
-            <file>file:/C:/Users/ozzy_/Documents/NetBeansProjects/js-tetris/public_html/images/nature-background.jpg</file>
-            <file>file:/C:/Users/ozzy_/Documents/NetBeansProjects/js-tetris/public_html/index.html</file>
-            <file>file:/C:/Users/ozzy_/Documents/NetBeansProjects/js-tetris/public_html/js/main.js</file>
-            <file>file:/C:/Users/ozzy_/Documents/NetBeansProjects/js-tetris/public_html/js/config.js</file>
-            <file>file:/C:/Users/ozzy_/Documents/NetBeansProjects/js-tetris/public_html/js/game.js</file>
+            <file>file:/C:/Users/jkim/Documents/NetBeansProjects/js-arcade/js-tetris/public_html/js/board.js</file>
+            <file>file:/C:/Users/jkim/Documents/NetBeansProjects/js-arcade/js-tetris/public_html/js/game.js</file>
+            <file>file:/C:/Users/jkim/Documents/NetBeansProjects/js-arcade/js-tetris/public_html/js/config.js</file>
+            <file>file:/C:/Users/jkim/Documents/NetBeansProjects/js-arcade/js-tetris/public_html/js/main.js</file>
+            <file>file:/C:/Users/jkim/Documents/NetBeansProjects/js-arcade/js-tetris/public_html/index.html</file>
+            <file>file:/C:/Users/jkim/Documents/NetBeansProjects/js-arcade/js-tetris/public_html/js/startpage.js</file>
+            <file>file:/C:/Users/jkim/Documents/NetBeansProjects/js-arcade/js-tetris/public_html/js/blocks.js</file>
+            <file>file:/C:/Users/jkim/Documents/NetBeansProjects/js-arcade/js-tetris/public_html/js/gamepage.js</file>
+            <file>file:/C:/Users/jkim/Documents/NetBeansProjects/js-arcade/js-tetris/public_html/css/tetris.css</file>
+            <file>file:/C:/Users/jkim/Documents/NetBeansProjects/js-arcade/js-tetris/public_html/js/util.js</file>
         </group>
     </open-files>
 </project-private>

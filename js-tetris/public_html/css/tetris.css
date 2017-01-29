@@ -1,84 +1,78 @@
-.background { 
+
+/* elements */
+body {
+    font-family: sans-serif;
 }
 
+/* for debug */
+.border {
+    border: 1px solid red;
+}
+
+/* basic classes */
 .block {
 	background: rgb(250, 50, 50);
 }
 
-.startgame {
-	text-align: center;
-	color: white;
-}
-
-.game_title {
-	margin: auto;
+/* header */
+.header {
 	font-family: serif;
-	width: 400px;
-	text-align: center;
-	background-color: blue;
-	color: white;
-	border: 3px solid gold;
+}
+.title {
+    margin: auto;
+    width: 400px;
+    text-align: center;
+    border: 2px solid black;
 }
 
-.game_menu {
-	font-family: sans-serif;
-	text-align: center;
-	color: yellow;
+/* footer */
+.footer {
+    text-align: center;
 }
 
-body {
-	background-color: black;
-	/*background-image: url("images/nature-background.jpg");*/
+/* body */
+/* menu */
+.menu {
+    text-align: center;
 }
 
-div.game {
-	margin: auto;
-	position: relative;
-	width: 400px;
-	height: 400px;
+/* game */
+.game {
+    margin: auto;
+    position: relative;
+    width: 400px;
+    height: 400px;
 }
 
-div.game_board {
-	position: absolute;
-	top: 20px;
-	left: 10px;
-	width: 200px;
-	border: 3px solid gold;
-	border-spacing: 0px;
+.game .board {
+    position: absolute;
+    top: 20px;
+    left: 10px;
+    width: 200px;
+    border: 2px solid black;
+    border-spacing: 0px;
 }
 
-div.score_board {	
-	position: absolute;
-	top: 20px;
-	left: 240px;
-	width: 100px;
-	color: white;
-	font-family: sans-serif;
-	text-align: right;
-	padding-right: 20px;
-	font-size: 20px;
+.game .score {
+    position: absolute;
+    top: 20px;
+    left: 240px;
+    width: 100px;
+    font-family: sans-serif;
+    text-align: right;
+    padding-right: 20px;
+    font-size: 20px;
 }
 
-div.preview_board {	
-	position: absolute;
-	bottom: 100px;
-	left: 280px;
+.game .preview {
+    position: absolute;
+    bottom: 100px;
+    left: 280px;
 }
 
-
-div.game_over {
-	position: absolute;
-	display: none;
-	color: white;
-	left: 30%;
-	top: 30%;
+.game .game_over {
+    position: absolute;
+    display: none;
+    left: 30%;
+    top: 30%;
 }
-
-p.help {
-	position: absolute;
-	right: 0px;
-	bottom: 20px;
-	text-align: center;
-	color: white;
-}
-

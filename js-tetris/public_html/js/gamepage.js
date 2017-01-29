@@ -6,45 +6,53 @@ var GamePage = (function() {
         this.game = game;
         this.gameOver = false;
 
-        var gameElt = elt("div", "game");
+        // create a wrapper
+        this.wrap = document.body.appendChild(
+                util.createElement('div', 'wrapper'));
 
-        var boardElt = elt("div", "game_board");
-        var scoreElt = elt("div", "score_board");
-        var previewElt = elt("div", "preview_board")
-        var gameOverElt = elt("div", "game_over");
+        // header
+        this.wrap.appendChild(
+                util.createElement('div', 'header')
+                .appendChild(util.createElement('h1', 'title',
+                'T.E.T.R.I.S')));
 
-        var gameOverMessage = elt("h1");
-        gameOverMessage.textContent = "Game Over";
-        gameOverElt.appendChild(gameOverMessage);
+        // game
+        var gameElem = util.createElement('div', 'game');
+        this.wrap.appendChild(gameElem);
 
-        var helpMessage = elt("p", "help");
-        helpMessage.textContent = "press Z, X to turn. left/right/down to move.";
+        var boardElem = util.createElement("div", "board");
+        gameElem.appendChild(boardElem);
 
-        var title = document.body.appendChild(elt("h1", "game_title"));
-        title.textContent = "T.E.T.R.I.S";
+        var scoreElem = util.createElement("div", "score");
+        gameElem.appendChild(scoreElem);
 
-        this.wrap = document.body.appendChild(gameElt);
-
-        this.wrap.appendChild(boardElt);
-        this.wrap.appendChild(scoreElt);
-        this.wrap.appendChild(previewElt);
-        this.wrap.appendChild(gameOverElt);
-        this.wrap.appendChild(helpMessage);
+        var previewElem = util.createElement("div", "preview")
+        gameElem.appendChild(previewElem);
+        
+        // game over message
+        var gameOverElem = util.createElement("div", "game_over",
+                '<h1>Game Over</h1>');
+        gameElem.appendChild(gameOverElem);
+        
+        // footer
+        this.wrap.appendChild(
+                util.createElement('div', 'footer', 
+                'press Z, X to turn. left/right/down to move.'));
 
         // create the board & the first block
         this.blocks = new Blocks();
         this.blocks.movePos((GameConfig.BOARD_WIDTH - 4) / 2, 0);
         this.nextBlocks = new Blocks();
         this.board = new Board(GameConfig.BOARD_WIDTH, GameConfig.BOARD_HEIGHT, 
-                                                boardElt);
+                                                boardElem);
 
         // creae the preview board
-        this.preview = new Board(4, 4, previewElt);
+        this.preview = new Board(4, 4, previewElem);
         this.preview.drawBlocks(this.nextBlocks);
 
         // create the score board
         this.scores = 0;
-        this.createScoreBoard(scoreElt);
+        this.createScoreBoard(scoreElem);
 
         function timer() {
             if (this.gameOver)
@@ -56,10 +64,8 @@ var GamePage = (function() {
         this.timer = setInterval(timer.bind(this), 1000);
     };
 
-    GamePage.prototype.createScoreBoard = function(scoreElt) {
-        var score = elt("p", "score");
-        score.textContent = this.scores;	
-        scoreElt.appendChild(score);
+    GamePage.prototype.createScoreBoard = function(scoreElem) {
+        scoreElem.appendChild(util.createElement("p", "score", '' + this.scores));
     };
 
     GamePage.prototype.translate = function(command) {
@@ -140,8 +146,8 @@ var GamePage = (function() {
     GamePage.prototype.over = function() {
         clearInterval(this.timer);
 
-        var gameOverElt = document.getElementsByClassName("game_over");
-        gameOverElt[0].style.display = "block";
+        var gameOver = document.getElementsByClassName("game_over");
+        gameOver[0].style.display = "block";
     };
 
     GamePage.prototype.close = function() {

@@ -1,8 +1,11 @@
+var util = {};
 
-function elt(name, className) {
-	var elt = document.createElement(name);
-	if (className) elt.className = className;
-	return elt;
-}
+util.createElement = function(name, className, innerText) {
+    var elem = document.createElement(name);
+    if (className) elem.className = className;
+    if (innerText) elem.innerHTML = innerText;
+    
+    return elem;
+};
 
 

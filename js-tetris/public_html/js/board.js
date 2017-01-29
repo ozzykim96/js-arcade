@@ -10,7 +10,7 @@ var Board = (function() {
         this.clear();
 
         this.wrap = elem;
-        this.createTable();
+        this.makeBoard();
     }
 
     Board.prototype.clear = function() {
@@ -30,7 +30,7 @@ var Board = (function() {
     Board.prototype.setBlocks = function(blocks) {	
         for (var y = 0; y < 4; y++) {
             for (var x = 0; x < 4; x++) {
-                if (blocks.get(x, y) != " ") {
+                if (blocks.get(x, y) !== " ") {
                     this.set(x + blocks.x, y + blocks.y, blocks.get(x, y));
                 }
             }
@@ -41,7 +41,7 @@ var Board = (function() {
     Board.prototype.removeBlocks = function(blocks) {
         for (var y = 0; y < 4; y++) {
             for (var x = 0; x < 4; x++) {
-                if (blocks.get(x, y) != " ") {
+                if (blocks.get(x, y) !== " ") {
                     this.set(x + blocks.x, y + blocks.y, " ");
                 }
             }
@@ -65,13 +65,13 @@ var Board = (function() {
             for (var x = 0; x < 4; x++) {
                 var newX = blocks.x + x;
                 var newY = blocks.y + y;
-                if (blocks.get(x, y) != " ")
+                if (blocks.get(x, y) !== " ")
                 {
                     if (newX < 0 || newY < 0 || newX >= this.cx || newY >= this.cy) {
                             return true;
                     }
                     // if the block of the board is not empty
-                    if (this.get(newX, newY) != " ") {
+                    if (this.get(newX, newY) !== " ") {
                             return true;
                     }
                 }
@@ -98,7 +98,7 @@ var Board = (function() {
         for (var y = 0; y < this.cy; y++) {
             var filled = true;
             for (var x = 0; x < this.cx; x++) {
-                if (this.get(x, y) == " ") {
+                if (this.get(x, y) === " ") {
                     filled = false;
                     break;
                 }
@@ -113,7 +113,7 @@ var Board = (function() {
 
     Board.prototype.isPiledUp = function() {
         for (var x = 0; x < this.cx; x++) {
-            if (this.get(x, 0) != " ")
+            if (this.get(x, 0) !== " ")
                 return true;
         }
         return false;
@@ -142,23 +142,23 @@ var Board = (function() {
         return blocks;
     };
 
-    Board.prototype.createTable = function() {
-        var scale = 20;
+    Board.prototype.makeBoard = function() {
+        var scale = GameConfig.BLOCK_SIZE;
 
-        function drawBackground(cx, cy) {
-            var table = elt("table", "background");
+        function createTable(cx, cy) {
+            var table = util.createElement("table", "background");
             table.style.width = cx * scale + "px";
             for (var y = 0; y < cy; y++) {
-                var rowElt = table.appendChild(elt("tr"));
-                rowElt.style.height = scale + "px";
+                var row = table.appendChild(util.createElement("tr"));
+                row.style.height = scale + "px";
                 for (var x = 0; x < cx; x++) {
-                    rowElt.appendChild(elt("td"));
+                    row.appendChild(util.createElement("td"));
                 }
             }
             return table;
         }
 
-        this.wrap.appendChild(drawBackground(this.cx, this.cy));
+        this.wrap.appendChild(createTable(this.cx, this.cy));
     };
 
     Board.prototype.drawBlocks = function(blocks) {
