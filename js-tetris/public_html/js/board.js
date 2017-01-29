@@ -2,6 +2,8 @@
 /* 
  * Boards 
  */
+/* global GameConfig, util */
+
 var Board = (function() {
     function Board(cx, cy, elem) {
         this.cx = cx;

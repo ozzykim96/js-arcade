@@ -33,7 +33,17 @@ body {
 /* body */
 /* menu */
 .menu {
+    margin: auto;
+    position: relative;
+    width: 400px;
     text-align: center;
+}
+
+.item {
+}
+
+.item:hover {
+    border: 1px solid black;
 }
 
 /* game */

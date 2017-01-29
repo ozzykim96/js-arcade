@@ -1,8 +1,9 @@
 /* 
  *	StartPage
  */
-var StartPage = function() {
+/* global util, GameSoftwareInfo */
 
+var StartPage = function() {    
     function StartPage(game) {
         var bestScore = "0";
 
@@ -27,10 +28,18 @@ var StartPage = function() {
         var menuElem = util.createElement('div', 'menu');
         this.wrap.appendChild(menuElem);
         
-        var startGameElem = util.createElement('h2', null, 'Start a new game (z)');
+        var startGameElem = util.createElement('h2', 'item', 'Start a new game (z)');
+        startGameElem.onclick = function() {
+            game.processCommand("z");
+            game.show();            
+        };
         menuElem.appendChild(startGameElem);
         
-        var quitGameElem = util.createElement('h2', null, 'Quit game (x)');
+        var quitGameElem = util.createElement('h2', 'item', 'Quit game (x)');
+        quitGameElem.onclick = function() {
+            game.processCommand("x");
+            game.show();            
+        };
         menuElem.appendChild(quitGameElem);
         
         // best scroe
@@ -55,9 +64,9 @@ var StartPage = function() {
     };
 
     StartPage.prototype.processCommand = function(command) {
-        if (command == "z")
+        if (command === "z")
             return "game_page";
-        else if (command == "x") {
+        else if (command === "x") {
             if (confirm('Are you sure you want to exit?')) {
                 window.close();
             } 

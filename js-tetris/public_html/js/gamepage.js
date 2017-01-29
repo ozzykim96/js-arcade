@@ -1,6 +1,8 @@
 /*
  * GamePage
  */
+/* global util, GameConfig, timer */
+
 var GamePage = (function() {
     function GamePage(game) {
         this.game = game;
@@ -11,10 +13,10 @@ var GamePage = (function() {
                 util.createElement('div', 'wrapper'));
 
         // header
-        this.wrap.appendChild(
-                util.createElement('div', 'header')
-                .appendChild(util.createElement('h1', 'title',
-                'T.E.T.R.I.S')));
+        var header = this.wrap.appendChild(
+                util.createElement('div', 'header'));
+        header.appendChild(util.createElement('h1', 'title',
+                'T.E.T.R.I.S'));
 
         // game
         var gameElem = util.createElement('div', 'game');
@@ -26,7 +28,7 @@ var GamePage = (function() {
         var scoreElem = util.createElement("div", "score");
         gameElem.appendChild(scoreElem);
 
-        var previewElem = util.createElement("div", "preview")
+        var previewElem = util.createElement("div", "preview");
         gameElem.appendChild(previewElem);
         
         // game over message
@@ -91,12 +93,12 @@ var GamePage = (function() {
 
     GamePage.prototype.processCommand = function(command) {
         command = this.translate(command);
-        if (this.gameOver == true) {
+        if (this.gameOver === true) {
             return "start_page";
         }
 
         var moved = this.board.act(this.blocks, command);
-        if (moved || command != "down")
+        if (moved || command !== "down")
             return "";
 
         // blocks can be piled up on the board.

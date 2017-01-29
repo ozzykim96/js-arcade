@@ -1,3 +1,5 @@
+/* global GameConfig */
+
 var protoBlocks = [
     // #1
     [ 	"##  ", 
@@ -180,7 +182,7 @@ var Blocks = (function() {
     };
 
     Blocks.prototype.turn = function(dir) {
-        if (dir == 0) {
+        if (dir === 0) {
             this.shape--;
             if (this.shape < 0)
                 this.shape = 3;
