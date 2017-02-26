@@ -11,12 +11,12 @@ body {
 
 /* basic classes */
 .block {
-	background: rgb(250, 50, 50);
+    background: rgb(250, 50, 50);
 }
 
 /* header */
 .header {
-	font-family: serif;
+    font-family: serif;
 }
 .title {
     margin: auto;
@@ -31,7 +31,8 @@ body {
 }
 
 /* body */
-/* menu */
+
+/* start page: menu */
 .menu {
     margin: auto;
     position: relative;
@@ -40,13 +41,14 @@ body {
 }
 
 .item {
+    border: 1px solid white;
 }
 
 .item:hover {
     border: 1px solid black;
 }
 
-/* game */
+/* game page: game */
 .game {
     margin: auto;
     position: relative;
