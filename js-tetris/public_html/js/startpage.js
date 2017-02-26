@@ -5,22 +5,6 @@
 
 var StartPage = function() {    
     function StartPage(game) {
-        var bestScore = util.getCookie("score");
-        if (bestScore === "") {
-            bestScore = "0";
-            util.setCookie("score", bestScore, 30);
-        }
-        /*
-        if (typeof(localStorage) !== "undefined") {
-            bestScore = localStorage.getItem("best_score");
-
-            if (bestScore === null) {
-                bestScore = "0";
-                localStorage.setItem("best_score", bestScore);
-            }
-        }
-        */
-
         // create a body wrapper
         this.wrap = document.body.appendChild(util.createElement("div", "wrapper"));
 
@@ -45,8 +29,13 @@ var StartPage = function() {
             game.show();            
         };
         menuElem.appendChild(quitGameElem);
-        
+
         // best scroe
+        var bestScore = util.getCookie("score");
+        if (bestScore === "") {
+            bestScore = "0";
+            util.setCookie("score", bestScore, 30);
+        }
         menuElem.appendChild(
                 util.createElement('h3', null, 'best score:' + bestScore));
         
@@ -65,12 +54,16 @@ var StartPage = function() {
     };
 
     StartPage.prototype.processCommand = function(command) {
-        if (command === "z")
-            return "game_page";
-        else if (command === "x") {
-            if (confirm('Are you sure you want to exit?')) {
-                window.close();
-            } 
+        switch (command) {
+            case "z":
+                return "game_page";
+            case "x":
+                if (confirm('Are you sure you want to exit?')) {
+                    window.close();
+                }
+                break;
+            default:
+                break;
         }
         return "";
     };

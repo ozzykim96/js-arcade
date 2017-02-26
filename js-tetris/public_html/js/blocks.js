@@ -215,10 +215,10 @@ var Blocks = (function() {
             case "down":
                 this.y++;
                 break;
-            case "turnleft":
+            case "z":
                 this.turn(0);
                 break;
-            case "turnright":
+            case "x":
                 this.turn(1);
                 break;
             default:

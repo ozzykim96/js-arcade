@@ -119,27 +119,6 @@ var GamePage = (function() {
         return setInterval(timer.bind(this), timeout);
     };
 
-    GamePage.prototype._translate = function(command) {
-        switch (command) {
-            case "r":
-                command = "right";
-                break;
-            case "l":
-                command = "left";
-                break;
-            case "d":
-                command = "down";
-                break;
-            case "z":
-                command = "turnleft";
-                break;
-            case "x":
-                command = "turnright";
-                break;
-        }
-        return command;
-    };
-
     GamePage.prototype._showGameOver = function() {
         clearInterval(this.timer);
 
@@ -148,7 +127,6 @@ var GamePage = (function() {
     };
 
     GamePage.prototype.processCommand = function(command) {
-        command = this._translate(command);
         if (this.gameOver === true) {
             return "start_page";
         }

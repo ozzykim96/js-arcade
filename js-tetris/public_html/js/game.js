@@ -32,13 +32,13 @@ function createGame() {
     var game = new Game();
 
     var addKeyHandler = function(event) {
-        var arrowCodes = {
+        var keyCodes = {
             37: "left", 38: "up", 39: "right", 40: "down",
             88: "x", 90: "z"
         };
 
-        if (arrowCodes.hasOwnProperty(event.keyCode)) {
-            game.processCommand(arrowCodes[event.keyCode]);
+        if (keyCodes.hasOwnProperty(event.keyCode)) {
+            game.processCommand(keyCodes[event.keyCode]);
             game.show();
             event.preventDefault();
         }		

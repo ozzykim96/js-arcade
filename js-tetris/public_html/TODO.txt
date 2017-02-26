@@ -3,4 +3,6 @@ TODO list:
 1. Add game level - done
 2. Use cookie instead of LocalStorage - done
 3. Set background image by user
+4. Maybe using buttons better than using "h3" in the start page.
+
 
