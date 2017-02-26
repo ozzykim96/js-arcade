@@ -172,7 +172,8 @@ var Blocks = (function() {
         this.shape = Math.floor(Math.random() * 4); // randomized number
     }
 
-    Blocks.prototype.movePos = function(x, y) {
+    /* set position of the block. */
+    Blocks.prototype.setPos = function(x, y) {
         this.x = x;
         this.y = y;
     };

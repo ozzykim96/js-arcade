@@ -12,14 +12,41 @@ var Board = (function() {
         this.clear();
 
         this.wrap = elem;
-        this.makeBoard();
+        this._makeBoard();
     }
 
+    Board.prototype._makeBoard = function() {
+        var scale = GameConfig.BLOCK_SIZE;
+
+        function createTable(cx, cy) {
+            var table = util.createElement("table", "background");
+            table.style.width = cx * scale + "px";
+            for (var y = 0; y < cy; y++) {
+                var row = table.appendChild(util.createElement("tr"));
+                row.style.height = scale + "px";
+                for (var x = 0; x < cx; x++) {
+                    row.appendChild(util.createElement("td"));
+                }
+            }
+            return table;
+        }
+
+        this.wrap.appendChild(createTable(this.cx, this.cy));
+    };
+
+    /* clear all blocks on the board 
+     */
     Board.prototype.clear = function() {
         for (var i = 0; i < this.cx * this.cy; i++) {
             this.arr[i] = " ";
         }
     };
+    /* get a block on the board
+     * 
+     * @param {type} x position x on the board
+     * @param {type} y position y on the board
+     * @returns {Array}
+     */
     Board.prototype.get = function(x, y) {
         return this.arr[y * this.cx + x];
     };
@@ -28,7 +55,11 @@ var Board = (function() {
         this.arr[y * this.cx + x] = value;
     };
 
-    /* set blocks on the board */
+    /* set 4x4 blocks on the board
+     * 
+     * @param {type} blocks
+     * @returns {undefined}
+     */
     Board.prototype.setBlocks = function(blocks) {	
         for (var y = 0; y < 4; y++) {
             for (var x = 0; x < 4; x++) {
@@ -39,7 +70,11 @@ var Board = (function() {
         }
     };
 
-    /* remove blocks on the board */
+    /* remove 4x4 blocks on the board
+     * 
+     * @param {type} blocks
+     * @returns {undefined}
+     */
     Board.prototype.removeBlocks = function(blocks) {
         for (var y = 0; y < 4; y++) {
             for (var x = 0; x < 4; x++) {
@@ -50,7 +85,12 @@ var Board = (function() {
         }
     };
 
-    /* check if move blocks on the board. if it can't move, it will return false. */
+    /* check if move blocks on the board. if it can't move, it will return false.
+     * 
+     * @param {type} blocks
+     * @param {type} direction
+     * @returns {Boolean}
+     */
     Board.prototype.checkMovable = function(blocks, direction) {
         var newBlocks = blocks.copy();
         newBlocks.move(direction);
@@ -61,7 +101,11 @@ var Board = (function() {
         return true;
     };
 
-    /* check whether any blocks conflict with other blocks on the board. */
+    /* check whether any blocks conflict with other blocks on the board.
+     * 
+     * @param {type} blocks
+     * @returns {Boolean} true, if there is a conflict
+     */
     Board.prototype.checkConflict = function(blocks) {
         for (var y = 0; y < 4; y++) {
             for (var x = 0; x < 4; x++) {
@@ -142,25 +186,6 @@ var Board = (function() {
             console.log("info: Board.tick: movable.");
         }
         return blocks;
-    };
-
-    Board.prototype.makeBoard = function() {
-        var scale = GameConfig.BLOCK_SIZE;
-
-        function createTable(cx, cy) {
-            var table = util.createElement("table", "background");
-            table.style.width = cx * scale + "px";
-            for (var y = 0; y < cy; y++) {
-                var row = table.appendChild(util.createElement("tr"));
-                row.style.height = scale + "px";
-                for (var x = 0; x < cx; x++) {
-                    row.appendChild(util.createElement("td"));
-                }
-            }
-            return table;
-        }
-
-        this.wrap.appendChild(createTable(this.cx, this.cy));
     };
 
     Board.prototype.drawBlocks = function(blocks) {

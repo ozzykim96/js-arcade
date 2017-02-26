@@ -5,9 +5,12 @@
 
 var StartPage = function() {    
     function StartPage(game) {
-        var bestScore = "0";
-
-        // TODO: use a cookie
+        var bestScore = util.getCookie("score");
+        if (bestScore === "") {
+            bestScore = "0";
+            util.setCookie("score", bestScore, 30);
+        }
+        /*
         if (typeof(localStorage) !== "undefined") {
             bestScore = localStorage.getItem("best_score");
 
@@ -16,6 +19,7 @@ var StartPage = function() {
                 localStorage.setItem("best_score", bestScore);
             }
         }
+        */
 
         // create a body wrapper
         this.wrap = document.body.appendChild(util.createElement("div", "wrapper"));
@@ -57,10 +61,7 @@ var StartPage = function() {
     }
 
     StartPage.prototype.close = function() {
-        var node = document.body;
-        while (node.hasChildNodes()) {
-            node.removeChild(node.lastChild);
-        }
+        util.removeAllChildElements(document.body);
     };
 
     StartPage.prototype.processCommand = function(command) {

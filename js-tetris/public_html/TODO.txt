@@ -1,6 +1,6 @@
 TODO list:
 
-1. Add game level
-2. Use cookie instead of LocalStorage
+1. Add game level - done
+2. Use cookie instead of LocalStorage - done
 3. Set background image by user
 
